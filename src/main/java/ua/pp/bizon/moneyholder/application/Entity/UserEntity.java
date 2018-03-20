@@ -2,11 +2,11 @@ package ua.pp.bizon.moneyholder.application.Entity;
 
 import javax.persistence.*;
 
-@Entity()
+//@Entity()
 public class UserEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+  //  @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name; // Not perfect!! Should be a proper object!

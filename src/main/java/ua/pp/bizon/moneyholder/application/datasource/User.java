@@ -1,6 +1,6 @@
 package ua.pp.bizon.moneyholder.application.datasource;
 
-import ua.pp.bizon.moneyholder.application.Entity.UserEntity;
+import ua.pp.bizon.moneyholder.application.entity.UserEntity;
 
 public class User {
     private String username;

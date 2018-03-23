@@ -2,15 +2,11 @@ package ua.pp.bizon.moneyholder.application.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
+import ua.pp.bizon.moneyholder.application.entity.UserEntity;
 import ua.pp.bizon.moneyholder.application.datasource.User;
 import ua.pp.bizon.moneyholder.application.entity.IUserRepository;
-import ua.pp.bizon.moneyholder.application.entity.UserEntity;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +14,7 @@ import java.util.List;
 @Transactional
 public class UsersDAO {
 
-	
+
     @Autowired
     private IUserRepository repository;
 

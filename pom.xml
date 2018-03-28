@@ -23,5 +23,6 @@
     </repositories>
 		<modules>
 		    <module>war</module>
+            <module>tests</module>
 		</modules>
 </project>

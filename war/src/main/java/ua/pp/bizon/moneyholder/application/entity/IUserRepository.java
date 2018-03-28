@@ -7,5 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public interface IUserRepository extends JpaRepository < UserEntity, Long > {}
+public interface IUserRepository extends JpaRepository < UserEntity, Long > {
+
+    UserEntity findByName(String name);
+}
 

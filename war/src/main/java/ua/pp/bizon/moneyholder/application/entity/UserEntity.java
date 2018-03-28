@@ -1,12 +1,14 @@
 package ua.pp.bizon.moneyholder.application.entity;
 
+import ua.pp.bizon.moneyholder.application.datasource.User;
+
 import javax.persistence.*;
 
 @Entity()
 public class UserEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name; // Not perfect!! Should be a proper object!
@@ -14,6 +16,12 @@ public class UserEntity{
     public UserEntity(String name) {
         super();
         this.name = name;
+    }
+
+    public UserEntity(User user){
+        super();
+        this.name = user.getUsername();
+        this.id = user.getId();
     }
 
     public Long getId() {

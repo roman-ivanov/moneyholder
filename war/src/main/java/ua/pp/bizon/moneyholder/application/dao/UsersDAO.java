@@ -31,4 +31,18 @@ public class UsersDAO {
         userEntities.stream().forEach(u -> users.add(new User(u)));
         return users;
     }
+
+
+    public User getByName(String name) {
+        UserEntity userEntity = getEntityByName(name);
+        return userEntity == null ? null : new User(userEntity);
+    }
+
+    public UserEntity getEntityByName(String name) {
+        return repository.findByName(name);
+    }
+
+    public void delete(UserEntity e) {
+        repository.delete(e);
+    }
 }

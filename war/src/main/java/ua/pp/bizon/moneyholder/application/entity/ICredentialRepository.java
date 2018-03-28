@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ICredentialRepository extends JpaRepository<Credential, Long> {
 
-    Credential findByUserId(long id);
+    Credential findByUser_Name(String name);
+    Credential findByUser(UserEntity userEntity);
 }

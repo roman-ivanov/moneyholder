@@ -2,7 +2,7 @@ package ua.pp.bizon.moneyholder.application.datasource;
 
 import ua.pp.bizon.moneyholder.application.entity.UserEntity;
 
-public class User {
+public class User implements Response {
     private String username;
     private long id;
 

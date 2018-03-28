@@ -1,9 +1,6 @@
 package ua.pp.bizon.moneyholder.application.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Credential {
@@ -12,6 +9,7 @@ public class Credential {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToOne
     private UserEntity user;
     private String password;
     private    int algorithm;

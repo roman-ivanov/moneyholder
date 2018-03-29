@@ -3,16 +3,35 @@ package ua.pp.bizon.moneyholder;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class ClientApplication extends  Endpoint {
 
-    public UsersEndpoint users(){
-        return new UsersEndpoint();
+    protected ClientApplication(CloseableHttpClient client) {
+        super(client);
     }
-    public Authentication authentication() { return new Authentication();}
+
+    public ClientApplication() {
+        this(HttpClientBuilder.create().setDefaultCookieStore(new BasicCookieStore()).build());
+        users = new UsersEndpoint(client);
+        authentication = new Authentication(client);
+    }
+
+    public UsersEndpoint users(){
+        return users;
+    }
+    public Authentication authentication() { return authentication;}
+
+    public UsersEndpoint users;
+    public Authentication authentication;
+
+
+
 
     public String login(String username, String password) throws IOException, URISyntaxException {
         logger.info("login?username=" + username + "&password=" + password);

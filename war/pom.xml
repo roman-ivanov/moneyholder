@@ -12,6 +12,8 @@
     <name>Money Holder Webapp</name>
     <properties>
         <springVersion>5.0.4.RELEASE</springVersion>
+        <springSecVersion>5.0.3.RELEASE</springSecVersion>
+
         <jacksonVersion>2.9.4</jacksonVersion>
     </properties>
 
@@ -75,6 +77,22 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${springVersion}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${springSecVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springSecVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springSecVersion}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

@@ -29,19 +29,40 @@ public class Session {
     }
 
     @Test
-    public void testSession() throws IOException, URISyntaxException {
+    public void testRegister() throws IOException, URISyntaxException {
         try {
             Assert.assertEquals("{\"ok\":\"OK\"}", clientApplication.users().register(USERNAME, PASSWORD));
-            String response = clientApplication.login(USERNAME, PASSWORD);
-            String uuid = new JsonParser().parse(response).getAsJsonObject().getAsJsonPrimitive("uuid").getAsString();
-            logger.debug("uuid:" + uuid);
-            String session = clientApplication.authentication().session(uuid);
-            logger.debug("session:" + session);
-            String username = new JsonParser().parse(session).getAsJsonObject().getAsJsonPrimitive("username").getAsString();
-            Assert.assertEquals(USERNAME, username);
+
         }finally {
             Assert.assertEquals("{\"ok\":\"OK\"}", clientApplication.users().deregister(USERNAME, PASSWORD));
         }
 
+    }
+
+
+    @Test
+    public void testSession() throws IOException, URISyntaxException {
+        try {
+            Assert.assertEquals("{\"ok\":\"OK\"}", clientApplication.users().register(USERNAME, PASSWORD));
+            String response = clientApplication.login(USERNAME, PASSWORD);
+            logger.debug("response:" + response);
+            String session = clientApplication.authentication().session();
+            logger.debug("session:" + session);
+        }finally {
+            Assert.assertEquals("{\"ok\":\"OK\"}", clientApplication.users().deregister(USERNAME, PASSWORD));
+        }
+    }
+
+
+
+    @Test(expected = java.lang.RuntimeException.class)
+    public void testWrongCredentials() throws IOException, URISyntaxException {
+        try {
+            Assert.assertEquals("{\"ok\":\"OK\"}", clientApplication.users().register(USERNAME, PASSWORD));
+            String response = clientApplication.login(USERNAME, PASSWORD + "233");
+            logger.debug("response:" + response);
+        }finally {
+            Assert.assertEquals("{\"ok\":\"OK\"}", clientApplication.users().deregister(USERNAME, PASSWORD));
+        }
     }
 }
